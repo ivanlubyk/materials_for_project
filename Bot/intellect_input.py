@@ -1,7 +1,8 @@
 import time
 
+
 COMMANDS = ['add', 'change', 'del', 'create', 'exit', 'note',
-            'Phonebook', 'Calendar jubilars', '1', '2', '3', 'phone', 'show all']
+            'Phonebook', 'Calendar jubilars', '1', '2', '3', '4', 'phone', 'show all', 'Clean Folder']
 
 
 def recognize_command():

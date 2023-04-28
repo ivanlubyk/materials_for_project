@@ -6,6 +6,8 @@ import os
 import sys
 from pathlib import Path
 from unicodedata import normalize, is_normalized
+import export_func as basic
+
 
 # Загальний список файлів
 rez = list()
@@ -183,6 +185,8 @@ def delete_empty_folder(path_for_delete):
 
 # Головна процедура для проведення розбору файлів
 def main():
+    basic.os.system('CLS')
+    print('===========Cleaning Folder===========\n')
     path_for_analize = input('Enter the full path to the folder >>>> ')
     try:
         dyrectory_current = path_for_analize
@@ -195,10 +199,14 @@ def main():
         if query.lower() == 'yes':
             main()
     except:
-        print('Enter the path to the folder')
+        query = input('Want to repeat with another folder ? (yes/no)\n>>>> ')
+        if query.lower() == 'yes':
+            main()
+        else:
+            return None
 
 
-if __name__ == '__main__':
-    main()
+
+
 
 

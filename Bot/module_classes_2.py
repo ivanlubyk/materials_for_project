@@ -349,9 +349,12 @@ class Record:
 
     @staticmethod
     def print_result(res_jubilars):
-        for key, value in res_jubilars.items():
-            a = (',  ').join(value)
-            print(key, ' : ', a)
+        if len(res_jubilars) == 0:
+            print('No anniversaries for the next week')
+        else:
+            for key, value in res_jubilars.items():
+                a = (',  ').join(value)
+                print(key, ' : ', a)
 
 
     #основна функція друку списку юбілярів

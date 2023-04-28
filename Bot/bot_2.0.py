@@ -2,7 +2,7 @@ import export_func as basic
 import module_classes_2 as class_exp
 import time
 from intellect_input import recognize_command as neurone
-
+from clean_folder import main as clean
 
 book = class_exp.Record()
 
@@ -11,7 +11,7 @@ def main_menu():
     basic.os.system('CLS')
     print('==== main menu ====')
     print('How can I help you?')
-    print('1. - Phonebook\n2. - Calendar jubilars\n3. - Exit\nYour chois:')
+    print('1. - Phonebook\n2. - Calendar jubilars\n3. - Clean Folder\n4. - Exit\nYour chois:')
 
     chois = neurone()    
     if chois == '1':
@@ -19,6 +19,10 @@ def main_menu():
     elif chois == '2':
         calendar_menu()
     elif chois == '3':
+        response =clean()
+        if response == None:
+            main_menu()
+    elif chois == '4':        
         basic.input_output(chois)
     else:
         main_menu()
