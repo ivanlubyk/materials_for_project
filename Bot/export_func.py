@@ -1,4 +1,4 @@
-import modul_classes_2 as class_exp
+import module_classes_2 as class_exp
 import os, calendar
 
 

@@ -1,6 +1,7 @@
 import export_func as basic
-import modul_classes_2 as class_exp
+import module_classes_2 as class_exp
 import time
+from intellect_input import recognize_command as neurone
 
 
 book = class_exp.Record()
@@ -12,13 +13,15 @@ def main_menu():
     print('How can I help you?')
     print('1. - Phonebook\n2. - Calendar jubilars\n3. - Exit\nYour chois:')
 
-    chois = input('>>>>  ')
+    chois = neurone()    
     if chois == '1':
         phone_menu()
     elif chois == '2':
         calendar_menu()
+    elif chois == '3':
+        basic.input_output(chois)
     else:
-        basic.input_output('end')
+        main_menu()
 
 
 def phone_menu():
@@ -31,7 +34,7 @@ def phone_menu():
           '\nYour chois:')
 
     
-    chois = input('>>>>  ').lower()
+    chois = neurone()
     if chois == 'add':
         basic.os.system('CLS')
         print('==== adding contact ===')
@@ -42,7 +45,7 @@ def phone_menu():
         if res[0] == True:
             name = class_exp.Name()
             name.name = res[1]
-            print(f'Name {res[1]} added sucsess')
+            print(f'Name {res[1]} added success')
         print('=' * 30)
         print('Add additional data ? (phone number, email, date of birth) (yes/no)')
         chois = input('>>>>  ')
@@ -53,7 +56,7 @@ def phone_menu():
             if res[0] == True and len(res[1]) > 0:
                 phone = class_exp.Phone()
                 phone.phone = res[1]
-                print(f'Phone number {res[1]} added sucsess')
+                print(f'Phone number {res[1]} added success')
 
             print('Add email address un the format "post@mail.com" (may be empty)')
             email_contact = input('>>>>  ')
@@ -61,7 +64,7 @@ def phone_menu():
             if res[0] == True and len(res[1]) > 0:
                 email = class_exp.Email()
                 email.email = res[1]
-                print(f'E-mail {res[1]} added sucsess')
+                print(f'E-mail {res[1]} added success')
 
             print("Add contact's date of the birth un the format 'dd-mm-yyyy'(may be empty)")
             date_birth = input('>>>>  ')
@@ -69,7 +72,7 @@ def phone_menu():
             if res[0] == True and len(res[1]) > 0:
                 date_birth = class_exp.DateBirth()
                 date_birth.date_birth = res[1]
-                print(f'Date of the birth "{res[1]}" added sucsess')
+                print(f'Date of the birth "{res[1]}" added success')
             
         else:
             phone = class_exp.Phone()            
@@ -229,12 +232,14 @@ def phone_menu():
                 else:
                     num_change = 1
                 print(
-                    f'Contact "{list(result.keys())[int(num_change)-1]}" entry will be deleted from the phonebook.(yes/no)\nYour choise')
+                    f'Contact "{list(result.keys())[int(num_change)-1]}" entry will be deleted from the phonebook.(yes/no)\nYour choice')
                 chois = input('>>>>  ')
                 if chois.lower() == 'yes':
                     book.delete_record(list(result.keys())[int(num_change)-1])
-                print(
-                    f'Record "{list(result.keys())[int(num_change)-1]}" deleted from phone book')
+                    print(
+                        f'Record "{list(result.keys())[int(num_change)-1]}" deleted from phone book')
+                else:
+                    print(f'Operation canceled')
                 print('Return in menu phonebook ?(yes/no)')
                 chois = input('>>>>  ')
                 if chois.lower() == 'yes':
